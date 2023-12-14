@@ -5,6 +5,8 @@ import 'package:math_expressions/math_expressions.dart';
 class CalculatorHome extends StatefulWidget {
   static const double fontSizeMedium = 38.0;
   static const double fontSizeBig = 48;
+  static const double panelMaxHeight = 80.0; //Todo Activ1 Altura máxima del panel
+
 
   const CalculatorHome({Key? key}) : super(key: key);
 
@@ -22,9 +24,14 @@ class _CalculatorHomeState extends State<CalculatorHome> {
     return Container(
       alignment: Alignment.centerRight,
       padding: EdgeInsets.all(10),
-      child: Text(
+      height: CalculatorHome.panelMaxHeight, //Todo activ1 Restricción de altura máxima
+      child: FittedBox( //todo activ1 "FittedBox" para ajustar el tamaño del texto para que quepa dentro de los paneles sin pasar la altura maxima
+      fit: BoxFit.scaleDown,
+        child: Text(
         _equationText,
         style: TextStyle(fontSize: _equationFontSize),
+        overflow: TextOverflow.ellipsis, //todo activ1 Evita que se desborde el texto
+      ),
       ),
     );
   }
@@ -40,13 +47,18 @@ class _CalculatorHomeState extends State<CalculatorHome> {
           width: 2,
         ),
       ),
+      height: CalculatorHome.panelMaxHeight, //todo activ1 Restricción de altura máxima
       padding: EdgeInsets.all(10),
-      child: Text(
+      child: FittedBox( //todo activ1 "FittedBox" para ajustar el tamaño del texto para que quepa dentro de los paneles sin pasar la altura maxima
+      fit: BoxFit.scaleDown,
+       child: Text(
         _resultText,
         style: TextStyle(
           fontSize: _resultFontSize,
           color: Colors.blue.shade700,
         ),
+        overflow: TextOverflow.ellipsis, //todo activ1 Evita que se desborde el texto
+      ),
       ),
     );
   }
