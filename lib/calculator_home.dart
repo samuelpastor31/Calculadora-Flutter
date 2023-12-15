@@ -90,32 +90,32 @@ class _CalculatorHomeState extends State<CalculatorHome> {
               Expanded(child:_calcButton('DEL', Colors.redAccent),),
               Expanded(child:_calcButton('%', Colors.lightBlue),),
               Expanded(child:_calcButton('÷', Colors.lightBlue),),
-        ],
-      ),
+            ],
+          ),
           Row(
             children: <Widget>[
               Expanded(child:_calcButton('7', Colors.grey.shade400),),
               Expanded(child:_calcButton('8', Colors.grey.shade400),),
               Expanded(child:_calcButton('9', Colors.grey.shade400),),
               Expanded(child:_calcButton('×', Colors.lightBlue),),
-        ],
-      ),
+            ],
+          ),
           Row(
             children: <Widget>[
               Expanded(child:_calcButton('4', Colors.grey.shade400),),
               Expanded(child:_calcButton('5', Colors.grey.shade400),),
               Expanded(child:_calcButton('6', Colors.grey.shade400),),
               Expanded(child:_calcButton('-', Colors.lightBlue),),
-        ],
-      ),
+            ],
+          ),
           Row(
             children: <Widget>[
               Expanded(child:_calcButton('1', Colors.grey.shade400),),
               Expanded(child:_calcButton('2', Colors.grey.shade400),),
               Expanded(child:_calcButton('3', Colors.grey.shade400),),
               Expanded(child:_calcButton('+', Colors.lightBlue),),
-        ],
-      ),
+            ],
+          ),
 
           Row(
             children: <Widget>[
@@ -145,7 +145,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
     }
     return operationResult;
   }
-  
+
   void _onCalcButtonPressed(String text) {
     setState(() {
       if (text == 'C'){
@@ -178,15 +178,18 @@ class _CalculatorHomeState extends State<CalculatorHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Calculator')),
-      body: SafeArea(
-        child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          _equationPanel(),
-          _resultPanel(),
-          _buttonsPanel()
+      body: SingleChildScrollView( //todo activ2 Se mete todo el contenido dentro de SingleChildScrollView con scrolldirection
+        scrollDirection: Axis.vertical, //todo activ2 esto permite bajar verticalmente la pantalla cuando no hay suficiente espacio
+        child: SafeArea(
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            _equationPanel(),
+            _resultPanel(),
+            _buttonsPanel()
           ],
         ),
+      ),
       ),
     );
   }
