@@ -43,8 +43,8 @@ class _CalculatorHomeState extends State<CalculatorHome> {
       decoration: BoxDecoration(
         color: Colors.grey.shade200,
         border: Border.all(
-          color: Colors.blue.shade200,
-          width: 2,
+          color: Colors.black, //todo activ3 cambio de color y grosor del borde
+          width: 3,
         ),
       ),
       height: CalculatorHome.panelMaxHeight, //todo activ1 Restricción de altura máxima
@@ -55,7 +55,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
         _resultText,
         style: TextStyle(
           fontSize: _resultFontSize,
-          color: Colors.blue.shade700,
+          color: Colors.black87, //todo activ3 cambio color resultado a negro
         ),
         overflow: TextOverflow.ellipsis, //todo activ1 Evita que se desborde el texto
       ),
@@ -177,7 +177,10 @@ class _CalculatorHomeState extends State<CalculatorHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Calculator')),
+      appBar: AppBar(
+          title: Text('Calculator'),
+          backgroundColor: Colors.black54 ,),//todo activ3 cambio de color del appbar a negro
+      backgroundColor: Colors.grey.shade400, //todo activ3 cambio del fondo a gris
       resizeToAvoidBottomInset: false,//todo activ2 evita que la pantalla se suba
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -190,12 +193,13 @@ class _CalculatorHomeState extends State<CalculatorHome> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
                 _equationPanel(),
-                _resultPanel(),
+
           ],
         ),
       ),
       ),
       ),
+          _resultPanel(),
           _buttonsPanel(),
             ],
       ),
