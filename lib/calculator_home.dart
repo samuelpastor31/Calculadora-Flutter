@@ -26,12 +26,12 @@ class _CalculatorHomeState extends State<CalculatorHome> {
       padding: EdgeInsets.all(10),
       height: CalculatorHome.panelMaxHeight, //Todo activ1 Restricción de altura máxima
       child: FittedBox( //todo activ1 "FittedBox" para ajustar el tamaño del texto para que quepa dentro de los paneles sin pasar la altura maxima
-      fit: BoxFit.scaleDown,
+        fit: BoxFit.scaleDown,
         child: Text(
-        _equationText,
-        style: TextStyle(fontSize: _equationFontSize),
-        overflow: TextOverflow.ellipsis, //todo activ1 Evita que se desborde el texto
-      ),
+          _equationText,
+          style: TextStyle(fontSize: _equationFontSize),
+          overflow: TextOverflow.ellipsis, //todo activ1 Evita que se desborde el texto
+        ),
       ),
     );
   }
@@ -39,42 +39,39 @@ class _CalculatorHomeState extends State<CalculatorHome> {
   Widget _resultPanel() {
     return Container(
       alignment: Alignment.centerRight,
-      margin: EdgeInsets.all(1.0),
+      margin: EdgeInsets.all(30.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0), //todo activ3 borde
         color: Colors.grey.shade200,
         border: Border.all(
-          color: Colors.black, //todo activ3 cambio de color y grosor del borde
-          width: 3,
+          color: Colors.blue.shade200,
+          width: 2,
         ),
       ),
       height: CalculatorHome.panelMaxHeight, //todo activ1 Restricción de altura máxima
       padding: EdgeInsets.all(10),
       child: FittedBox( //todo activ1 "FittedBox" para ajustar el tamaño del texto para que quepa dentro de los paneles sin pasar la altura maxima
-      fit: BoxFit.scaleDown,
-       child: Text(
-        _resultText,
-        style: TextStyle(
-          fontSize: _resultFontSize,
-          color: Colors.black87, //todo activ3 cambio color resultado a negro
+        fit: BoxFit.scaleDown,
+        child: Text(
+          _resultText,
+          style: TextStyle(
+            fontSize: _resultFontSize,
+            color: Colors.blue.shade700,
+          ),
+          overflow: TextOverflow.ellipsis, //todo activ1 Evita que se desborde el texto
         ),
-        overflow: TextOverflow.ellipsis, //todo activ1 Evita que se desborde el texto
-      ),
       ),
     );
   }
 
   Widget _calcButton(String text, Color color) {
     return Container(
-      margin: EdgeInsets.all(1.0),
-      padding: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(5.0)),//todo activ3 botones redondeados
+      margin: EdgeInsets.all(6),
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(color: color,),
       child: TextButton(
         child: Text(
           text,
-          style: TextStyle(color: Colors.white, fontSize: 30.0),
+          style: TextStyle(color: Colors.white, fontSize: 20.0),
         ),
         onPressed: () => _onCalcButtonPressed(text),
       ),
@@ -89,10 +86,10 @@ class _CalculatorHomeState extends State<CalculatorHome> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Expanded(child: _calcButton('C', Colors.black),),
-              Expanded(child:_calcButton('DEL', Colors.black),),
-              Expanded(child:_calcButton('%', Colors.black54),),
-              Expanded(child:_calcButton('÷', Colors.black54),),
+              Expanded(child: _calcButton('C', Colors.orange),),
+              Expanded(child:_calcButton('DEL', Colors.redAccent),),
+              Expanded(child:_calcButton('%', Colors.lightBlue),),
+              Expanded(child:_calcButton('÷', Colors.lightBlue),),
             ],
           ),
           Row(
@@ -100,7 +97,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
               Expanded(child:_calcButton('7', Colors.grey.shade400),),
               Expanded(child:_calcButton('8', Colors.grey.shade400),),
               Expanded(child:_calcButton('9', Colors.grey.shade400),),
-              Expanded(child:_calcButton('×', Colors.black54),),
+              Expanded(child:_calcButton('×', Colors.lightBlue),),
             ],
           ),
           Row(
@@ -108,7 +105,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
               Expanded(child:_calcButton('4', Colors.grey.shade400),),
               Expanded(child:_calcButton('5', Colors.grey.shade400),),
               Expanded(child:_calcButton('6', Colors.grey.shade400),),
-              Expanded(child:_calcButton('-', Colors.black54),),
+              Expanded(child:_calcButton('-', Colors.lightBlue),),
             ],
           ),
           Row(
@@ -116,15 +113,15 @@ class _CalculatorHomeState extends State<CalculatorHome> {
               Expanded(child:_calcButton('1', Colors.grey.shade400),),
               Expanded(child:_calcButton('2', Colors.grey.shade400),),
               Expanded(child:_calcButton('3', Colors.grey.shade400),),
-              Expanded(child:_calcButton('+', Colors.black54),),
+              Expanded(child:_calcButton('+', Colors.lightBlue),),
             ],
           ),
 
           Row(
             children: <Widget>[
-              Expanded(child:_calcButton('0', Colors.grey.shade400,),),
+              Expanded(child:_calcButton('0', Colors.grey.shade400),),
               Expanded(child:_calcButton('.', Colors.grey.shade400),),
-              Expanded(child:_calcButton('=', Colors.black),),
+              Expanded(child:_calcButton('=', Colors.orange),),
             ],
           ),
         ],
@@ -177,39 +174,34 @@ class _CalculatorHomeState extends State<CalculatorHome> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Calculator'),
-          backgroundColor: Colors.black54 ,//todo activ3 cambio de color del appbar a negro
-          elevation: 0.0, //todo activ3 borrado de sombra
-        ),
-      backgroundColor: Colors.grey.shade400, //todo activ3 cambio del fondo a gris
+      appBar: AppBar(title: Text('Calculator')),
       resizeToAvoidBottomInset: false,//todo activ2 evita que la pantalla se suba
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-      Expanded(
-      child: SingleChildScrollView( //todo activ2 Se mete todo el contenido dentro de SingleChildScrollView con scrolldirection
-        scrollDirection: Axis.vertical, //todo activ2 esto permite bajar verticalmente la pantalla cuando no hay suficiente espacio
-        child: SafeArea(
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-                _equationPanel(),
-
-          ],
-        ),
-      ),
-      ),
-      ),
-          _resultPanel(),
-          _buttonsPanel(),
-            ],
+          Expanded(
+            child: SingleChildScrollView( //todo activ2 Se mete todo el contenido dentro de SingleChildScrollView con scrolldirection
+              scrollDirection: Axis.vertical, //todo activ2 esto permite bajar verticalmente la pantalla cuando no hay suficiente espacio
+              child: SafeArea(
+                child: Column(
+                  children: <Widget>[
+                    _equationPanel(),
+                    _resultPanel(),
+                    _buttonsPanel(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
+
 
 
