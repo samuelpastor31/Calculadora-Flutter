@@ -41,10 +41,11 @@ class _CalculatorHomeState extends State<CalculatorHome> {
       alignment: Alignment.centerRight,
       margin: EdgeInsets.all(30.0),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0), //todo activ3 borde
         color: Colors.grey.shade200,
         border: Border.all(
-          color: Colors.blue.shade200,
-          width: 2,
+          color: Colors.black, //todo activ3 cambio de color y grosor del borde
+          width: 3,
         ),
       ),
       height: CalculatorHome.panelMaxHeight, //todo activ1 Restricción de altura máxima
@@ -55,7 +56,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
           _resultText,
           style: TextStyle(
             fontSize: _resultFontSize,
-            color: Colors.blue.shade700,
+            color: Colors.black87, //todo activ3 cambio color resultado a negro
           ),
           overflow: TextOverflow.ellipsis, //todo activ1 Evita que se desborde el texto
         ),
@@ -67,7 +68,9 @@ class _CalculatorHomeState extends State<CalculatorHome> {
     return Container(
       margin: EdgeInsets.all(6),
       padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(color: color,),
+      decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(5.0)),//todo activ3 botones redondeados
       child: TextButton(
         child: Text(
           text,
@@ -78,7 +81,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
     );
   }
 
-  Widget _buttonsPanel() {
+  Widget _buttonsPanel() { //todo activ3 cambio color
     return Container(
       color: Colors.grey.shade300,
       child: Column(
@@ -86,10 +89,10 @@ class _CalculatorHomeState extends State<CalculatorHome> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Expanded(child: _calcButton('C', Colors.orange),),
-              Expanded(child:_calcButton('DEL', Colors.redAccent),),
-              Expanded(child:_calcButton('%', Colors.lightBlue),),
-              Expanded(child:_calcButton('÷', Colors.lightBlue),),
+              Expanded(child: _calcButton('C', Colors.black),),
+              Expanded(child:_calcButton('DEL', Colors.black),),
+              Expanded(child:_calcButton('%', Colors.black54),),
+              Expanded(child:_calcButton('÷', Colors.black54),),
             ],
           ),
           Row(
@@ -97,7 +100,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
               Expanded(child:_calcButton('7', Colors.grey.shade400),),
               Expanded(child:_calcButton('8', Colors.grey.shade400),),
               Expanded(child:_calcButton('9', Colors.grey.shade400),),
-              Expanded(child:_calcButton('×', Colors.lightBlue),),
+              Expanded(child:_calcButton('×', Colors.black54),),
             ],
           ),
           Row(
@@ -105,7 +108,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
               Expanded(child:_calcButton('4', Colors.grey.shade400),),
               Expanded(child:_calcButton('5', Colors.grey.shade400),),
               Expanded(child:_calcButton('6', Colors.grey.shade400),),
-              Expanded(child:_calcButton('-', Colors.lightBlue),),
+              Expanded(child:_calcButton('-', Colors.black54),),
             ],
           ),
           Row(
@@ -113,7 +116,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
               Expanded(child:_calcButton('1', Colors.grey.shade400),),
               Expanded(child:_calcButton('2', Colors.grey.shade400),),
               Expanded(child:_calcButton('3', Colors.grey.shade400),),
-              Expanded(child:_calcButton('+', Colors.lightBlue),),
+              Expanded(child:_calcButton('+', Colors.black54),),
             ],
           ),
 
@@ -121,7 +124,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
             children: <Widget>[
               Expanded(child:_calcButton('0', Colors.grey.shade400),),
               Expanded(child:_calcButton('.', Colors.grey.shade400),),
-              Expanded(child:_calcButton('=', Colors.orange),),
+              Expanded(child:_calcButton('=', Colors.black),),
             ],
           ),
         ],
@@ -178,7 +181,8 @@ class _CalculatorHomeState extends State<CalculatorHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Calculator')),
+      appBar: AppBar(title: Text('Calculator'), backgroundColor:Colors.black54 , elevation: 0.0, ),//todo activ3 borrado de sombra
+      backgroundColor: Colors.grey.shade300, //todo activ3 cambio de color del appbar a negro
       resizeToAvoidBottomInset: false,//todo activ2 evita que la pantalla se suba
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
