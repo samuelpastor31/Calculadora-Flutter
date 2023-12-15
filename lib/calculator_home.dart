@@ -41,6 +41,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
       alignment: Alignment.centerRight,
       margin: EdgeInsets.all(1.0),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0), //todo activ3 borde
         color: Colors.grey.shade200,
         border: Border.all(
           color: Colors.black, //todo activ3 cambio de color y grosor del borde
@@ -67,7 +68,9 @@ class _CalculatorHomeState extends State<CalculatorHome> {
     return Container(
       margin: EdgeInsets.all(1.0),
       padding: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(color: color,),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(5.0)),//todo activ3 botones redondeados
       child: TextButton(
         child: Text(
           text,
@@ -119,7 +122,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
 
           Row(
             children: <Widget>[
-              Expanded(child:_calcButton('0', Colors.grey.shade400),),
+              Expanded(child:_calcButton('0', Colors.grey.shade400,),),
               Expanded(child:_calcButton('.', Colors.grey.shade400),),
               Expanded(child:_calcButton('=', Colors.black),),
             ],
@@ -179,7 +182,9 @@ class _CalculatorHomeState extends State<CalculatorHome> {
     return Scaffold(
       appBar: AppBar(
           title: Text('Calculator'),
-          backgroundColor: Colors.black54 ,),//todo activ3 cambio de color del appbar a negro
+          backgroundColor: Colors.black54 ,//todo activ3 cambio de color del appbar a negro
+          elevation: 0.0, //todo activ3 borrado de sombra
+        ),
       backgroundColor: Colors.grey.shade400, //todo activ3 cambio del fondo a gris
       resizeToAvoidBottomInset: false,//todo activ2 evita que la pantalla se suba
       body: Column(
