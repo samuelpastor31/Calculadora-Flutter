@@ -65,16 +65,22 @@ class _CalculatorHomeState extends State<CalculatorHome> {
   }
 
   Widget _calcButton(String text, Color color, bool isHorizontal) {
+    bool isGrayBackground = color == Colors.grey.shade400 || color == Colors.grey.shade200;
+    Color textColor = isGrayBackground ? Colors.black : Colors.white; //todo activ3 cambio de color dependiendo del color del boton, para mejorar facilidad de lectura por contraste
     return Container(
       margin: EdgeInsets.all(6),
-      padding: isHorizontal ? EdgeInsets.all(1) : EdgeInsets.all(16),
+
+      padding: isHorizontal ? EdgeInsets.all(1) : EdgeInsets.all(16), //todo activ4 cambiar padding butones si el dispositivo está en vertical o horizontal
       decoration: BoxDecoration(
+
           color: color,
           borderRadius: BorderRadius.circular(5.0)),//todo activ3 botones redondeados
+
       child: TextButton(
+        style: TextButton.styleFrom(primary: textColor), // Set the text color here
         child: Text(
           text,
-          style: TextStyle(color: Colors.white, fontSize: 20.0),
+          style: TextStyle(color: textColor, fontSize: 20.0),
         ),
         onPressed: () => _onCalcButtonPressed(text),
       ),
@@ -214,50 +220,21 @@ class _CalculatorHomeState extends State<CalculatorHome> {
     });
   }
 
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(title: Text('Calculator'), backgroundColor:Colors.black54 , elevation: 0.0, ),//todo activ3 borrado de sombra
-  //     backgroundColor: Colors.grey.shade300, //todo activ3 cambio de color del appbar a negro
-  //     resizeToAvoidBottomInset: false,//todo activ2 evita que la pantalla se suba
-  //     body: Column(
-  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //       children: <Widget>[
-  //         Expanded(
-  //           child: SingleChildScrollView( //todo activ2 Se mete todo el contenido dentro de SingleChildScrollView con scrolldirection
-  //             scrollDirection: Axis.vertical, //todo activ2 esto permite bajar verticalmente la pantalla cuando no hay suficiente espacio
-  //             child: SafeArea(
-  //               child: Column(
-  //                 children: <Widget>[
-  //                   _equationPanel(),
-  //                   _resultPanel(),
-  //                   _buttonsPanel(),
-  //                 ],
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Calculator'),
         backgroundColor: Colors.black54,
-        elevation: 0.0,
+        elevation: 0.0, //todo activ3 borrado de sombra y cambio de color del appbar a negro del app
       ),
       backgroundColor: Colors.grey.shade300,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false, //todo activ2 evita que la pantalla se suba
       body: LayoutBuilder(
         builder: (context, constraints) {
           bool isHorizontal = constraints.maxWidth > 600;
 
-          if (isHorizontal) {
+          if (isHorizontal) { //todo activ4 cambio de buttonsPanel en función de si es horizontal o no
             return Row(
               children: [
                 Expanded(
@@ -276,7 +253,7 @@ class _CalculatorHomeState extends State<CalculatorHome> {
             );
           } else {
             return SingleChildScrollView(
-              scrollDirection: Axis.vertical,
+              scrollDirection: Axis.vertical, //todo activ2 esto permite bajar verticalmente la pantalla cuando no hay suficiente espacio
               child: SafeArea(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
