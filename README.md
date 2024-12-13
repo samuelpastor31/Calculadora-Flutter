@@ -1,6 +1,10 @@
-# t2_calculadora
+#calculadora
 
-Calculator part guiada. En aquesta branca hi podem accedir a la part guiada del segon taller. 
+Este taller consiste en poner en práctica los conocimientos adquiridos durante las últimas semanas y hacer una calculadora funcional en Flutter.
+
+La lógica para las operaciones matemáticas está implementada en el método _evaluateEquation(). Utiliza la biblioteca math_expressions para analizar y evaluar expresiones matemáticas. Se utiliza la adaptabilidad de la fuente para ajustar el tamaño de la fuente en los paneles de la expresión y el resultado.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Aquest taller consisteix a posar en pràctica els coneixements adquirits durant les últimes setmanes 
 y fer una calculadora funcional a flutter.
